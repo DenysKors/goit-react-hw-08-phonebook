@@ -11,7 +11,7 @@ import {
 
 export function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
@@ -22,8 +22,8 @@ export function ContactForm() {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
       default:
         return;
@@ -42,13 +42,13 @@ export function ContactForm() {
       return alert(`${name} is already in contacts`);
     }
 
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 
   const resetForm = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -69,8 +69,8 @@ export function ContactForm() {
         Number
         <FormInput
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

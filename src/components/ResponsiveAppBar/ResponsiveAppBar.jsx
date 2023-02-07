@@ -1,7 +1,8 @@
 import * as React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useAuthorization } from 'hooks/useAuthorization';
+import { logOutUser } from 'redux/authorization/authorizationThunk';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -20,7 +21,7 @@ const pages = ['Contacts'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useAuthorization();
 
@@ -43,11 +44,11 @@ function ResponsiveAppBar() {
   // };
 
   const onLogout = () => {
-    // dispatch(logOut())
-    //   .unwrap()
-    //   .then(() => {
-    //     navigate('/login', { replace: true });
-    //   });
+    dispatch(logOutUser())
+      .unwrap()
+      .then(() => {
+        navigate('/login', { replace: true });
+      });
   };
 
   return (

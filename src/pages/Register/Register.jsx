@@ -1,5 +1,6 @@
 import * as React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { registerUser } from 'redux/authorization/authorizationThunk';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -30,16 +31,18 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Register() {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get('username'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    dispatch(
+      registerUser({
+        name: data.get('username'),
+        email: data.get('email'),
+        password: data.get('password'),
+      })
+    );
   };
 
   return (

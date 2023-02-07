@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -52,16 +52,15 @@ export const logOutUser = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.authorization.token;
+    const { token } = thunkAPI.getState().authorization;
 
-    if (persistedToken === null) {
+    if (token === null) {
       return thunkAPI.rejectWithValue('Fetch user operation aborted');
     }
 
     try {
-      setAuthHeader(persistedToken);
-      const { data } = await axios.get('/users/me');
+      setAuthHeader(token);
+      const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
