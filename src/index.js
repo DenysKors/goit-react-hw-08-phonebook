@@ -18,3 +18,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 );
+
+// User account for tests:
+// "name": "Adrian",
+// "email": "acrossing12@mail.com",
+// "password": "qwerty1234567"
