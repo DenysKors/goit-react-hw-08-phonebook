@@ -4,6 +4,8 @@ export const Box = styled.main`
   margin-right: 15px;
   margin-left: 15px;
 
+  height: calc(100vh - 150px);
+
   display: flex;
   align-items: center;
   justify-content: center;
