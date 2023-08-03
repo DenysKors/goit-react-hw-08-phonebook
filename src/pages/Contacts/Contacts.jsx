@@ -23,22 +23,20 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <main>
-      <Wrapper>
-        <ContactForm />
-        <h2>Contacts</h2>
-        <Filter />
-        {error !== null && (
-          <p style={{ color: 'red', fontWeight: 700, fontSize: 20 }}>
-            Something gone wrong, please try again!
-          </p>
-        )}
-        {isLoading && !error && <p>Loading, please wait...</p>}
-        {itemsList.length > 0 && <ContactList />}
-        {itemsList.length === 0 && !isLoading && (
-          <p>You don`t have any contacts yet</p>
-        )}
-      </Wrapper>
-    </main>
+    <Wrapper>
+      <ContactForm />
+      <h2>Contacts</h2>
+      <Filter />
+      {error !== null && (
+        <p style={{ color: 'red', fontWeight: 700, fontSize: 20 }}>
+          Something gone wrong, please try again!
+        </p>
+      )}
+      {isLoading && !error && <p>Loading, please wait...</p>}
+      {itemsList.length > 0 && <ContactList />}
+      {itemsList.length === 0 && !isLoading && (
+        <p>You don`t have any contacts yet</p>
+      )}
+    </Wrapper>
   );
 }

@@ -1,15 +1,19 @@
 import styled from 'styled-components';
+import bg_image from '../../images/bg-image.jpg';
 
 export const Box = styled.main`
-  margin-right: 15px;
-  margin-left: 15px;
-
   height: calc(100vh - 156px);
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  background-image: url(${bg_image});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #000;
 `;
 
 export const Title = styled.h1`
